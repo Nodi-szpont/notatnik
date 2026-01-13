@@ -74,7 +74,21 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         view.setBackgroundColor(Color.GRAY);
                         TextView textView = (TextView) view;
-                        textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                        if (textView.getPaintFlags() == Paint.STRIKE_THRU_TEXT_FLAG) {
+                            textView.setPaintFlags(Paint.ANTI_ALIAS_FLAG);
+                        }else {
+                            textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                        }
+                    }
+                }
+        );
+        listView.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        rzeczyDoZrobienia.remove(i);
+                        arraryAdapter.notifyDataSetChanged();
+                        return false;
                     }
                 }
         );
