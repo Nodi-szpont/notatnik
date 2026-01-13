@@ -1,11 +1,15 @@
 package com.example.egz2023;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
                         rzeczyDoZrobienia.add(rzeczyDozrobienia);
                         arraryAdapter.notifyDataSetChanged();
                         editText.setText("");
+                    }
+                }
+        );
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        view.setBackgroundColor(Color.GRAY);
+                        TextView textView = (TextView) view;
+                        textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     }
                 }
         );
